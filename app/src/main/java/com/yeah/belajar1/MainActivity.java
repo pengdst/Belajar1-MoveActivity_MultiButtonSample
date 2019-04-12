@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    //Deklarasi variabel
     Button button, berubah;
     EditText etNama, etNim, etKelas;
     TextView hello;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Memanggil id XML kedalam variabel
         button = findViewById(R.id.berubah);
         berubah = findViewById(R.id.merubahhellow);
 
@@ -33,17 +35,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        //Memisahkan button berdasarkan id XML
         switch (v.getId()){
             case R.id.berubah:
+                //Membuat variabel string untuk menampung data dari edittext
                 String strNama = etNama.getText().toString();
                 String strNim = etNim.getText().toString();
                 String strkelas = etKelas.getText().toString();
 
+                //Membuat intent untuk berpindah activity
                 Intent intent = new Intent(MainActivity.this, DataActivity.class);
+
+                //Menitipkan data pada intent yang sudah dibuat
                 intent.putExtra("dataNama", strNama);
                 intent.putExtra("nim", strNim);
                 intent.putExtra("kelas", strkelas);
 
+                //Menjalankan perpindahan Activity sesuai intent yang telah dibuat
                 startActivity(intent);
                 break;
             case R.id.merubahhellow:
